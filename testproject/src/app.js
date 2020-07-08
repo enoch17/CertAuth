@@ -1,3 +1,5 @@
+
+
 App = {
     loading: false,
     contracts: {},
@@ -101,10 +103,23 @@ App = {
           hold = res
           var holder = hold[2].toString()     
           console.log('Certificate gotten')
+          holder.split(",");
           return holder  
         }
         )
+        // exports.getCert = async (req,res,next)=>{
+        //   App.setLoading(true)
+        //   var hold = null
+        //   let id = req.body.id;
+        //   await App.cert.unis(id).then(function(res){
+        //     hold = res
+        //     var holder = hold[2].toString()     
+        //     console.log('Certificate gotten')
+        //     return holder  
+        //   }
+        // }
     }
+
   }
   
   $(() => {
