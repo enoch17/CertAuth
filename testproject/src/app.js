@@ -1,4 +1,28 @@
 
+const bodyParser = require('body-parser');
+const log = require('morgan')('dev');
+const express = require('express');
+const cors = require('cors');
+
+
+app.use(bodyParser.urlencoded({extended: true}));
+// Configure bodyparser
+const bodyParserJSON = bodyParser.json();
+const bodyParserURLEncoded = bodyParser.urlencoded({ extended: true });
+const bodyParserRaw = bodyParser.raw();
+const bodyParserText = bodyParser.text();
+
+// Configure app.use()
+app.use(log);
+app.use(express.json());
+app.use(bodyParserJSON);
+app.use(bodyParserURLEncoded);
+app.use(bodyParserRaw);
+app.use(bodyParserText);
+app.use(cors());
+
+
+
 
 App = {
     loading: false,
@@ -129,3 +153,15 @@ App = {
       App.load()
     })
   })
+
+
+
+app.get('/api/v1', (req, res) =>
+	res.json({ message: 'Hello World! Welcome to iDeyPay Till Engine' })
+);
+
+const PORT = 3000;
+app.listen(PORT, () => {
+	
+	console.log(`server started on port ${PORT}`);
+});
