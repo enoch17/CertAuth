@@ -23,7 +23,7 @@ app.use(cors());
 
 
 
-
+exports.getCerty = async (req,resp,next) =>{
 App = {
     loading: false,
     contracts: {},
@@ -120,9 +120,12 @@ App = {
           window.location.reload()
       },
         getCertificate: async(id,snum) =>{
+          snum = req.body;
+
         //get certificates
         App.setLoading(true)
-        // snum = "enoch"
+       
+
         var hold = null
         await App.cert.unis(id).then(function(res){
           hold = res
@@ -144,6 +147,10 @@ App = {
           return "Certificate doesn't exist"
         }
         )
+        resp.json({
+          sucess: true,
+          split2,
+        })
     }
 
   }
@@ -154,14 +161,6 @@ App = {
     })
   })
 
+}
 
 
-app.get('/api/v1', (req, res) =>
-	res.json({ message: 'Hello World! Welcome to iDeyPay Till Engine' })
-);
-
-const PORT = 3000;
-app.listen(PORT, () => {
-	
-	console.log(`server started on port ${PORT}`);
-});
