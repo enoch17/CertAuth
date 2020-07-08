@@ -9,6 +9,7 @@ App = {
       await App.loadAccount()
       await App.loadContract()
       await App.render()
+      // await App.call()
     },
     // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
     loadWeb3: async () => {
@@ -52,8 +53,8 @@ App = {
       // Create a JavaScript version of the smart contract
       const cert = await $.getJSON('Cert.json')
       App.contracts.Cert = TruffleContract(cert)
-      await App.contracts.Cert.setProvider(new Web3.providers.HttpProvider("http://172.31.33.253:7545"))      
-      // App.contracts.Cert.setProvider(App.web3Provider)
+      // await App.contracts.Cert.setProvider(new Web3.providers.HttpProvider("http://172.31.33.253:7545"))      
+      App.contracts.Cert.setProvider(App.web3Provider)
       console.log('Contract gotten')
       // Hydrate the smart contract with values from the blockchain
       App.cert = await App.contracts.Cert.deployed()
@@ -95,16 +96,29 @@ App = {
           console.log('Certificate added')
           window.location.reload()
       },
-    getCertificate: async(id) =>{
+    getCertificate: async(id,snum) =>{
         //get certificates
         App.setLoading(true)
+        // snum = "enoch"
         var hold = null
         await App.cert.unis(id).then(function(res){
           hold = res
           var holder = hold[2].toString()     
           console.log('Certificate gotten')
-          holder.split(",");
-          return holder  
+          var split =holder.split(";");
+          var len = split.length
+          console.log(holder)  
+          console.log(split)
+          for(let i = 0;i<len;i++)
+          {
+           var split2 = split[i].split(",")
+           console.log(split2)
+           if(snum == split2[0])
+           {
+              return split2
+           }
+          }
+          return "Certificate doesn't exist"
         }
         )
         // exports.getCert = async (req,res,next)=>{
@@ -118,6 +132,9 @@ App = {
         //     return holder  
         //   }
         // }
+    },
+    call: async() =>{
+        await App.getCertificate(2)
     }
 
   }
