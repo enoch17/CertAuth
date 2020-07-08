@@ -95,29 +95,31 @@ App = {
           console.log('Certificate added')
           window.location.reload()
       },
-    getCertificate: async(id) =>{
+        getCertificate: async(id,snum) =>{
         //get certificates
         App.setLoading(true)
+        // snum = "enoch"
         var hold = null
         await App.cert.unis(id).then(function(res){
           hold = res
           var holder = hold[2].toString()     
           console.log('Certificate gotten')
-          holder.split(",");
-          return holder  
+          var split =holder.split(";");
+          var len = split.length
+          console.log(holder)  
+          console.log(split)
+          for(let i = 0;i<len;i++)
+          {
+           var split2 = split[i].split(",")
+           console.log(split2)
+           if(snum == split2[0])
+           {
+              return split2
+           }
+          }
+          return "Certificate doesn't exist"
         }
         )
-        // exports.getCert = async (req,res,next)=>{
-        //   App.setLoading(true)
-        //   var hold = null
-        //   let id = req.body.id;
-        //   await App.cert.unis(id).then(function(res){
-        //     hold = res
-        //     var holder = hold[2].toString()     
-        //     console.log('Certificate gotten')
-        //     return holder  
-        //   }
-        // }
     }
 
   }
