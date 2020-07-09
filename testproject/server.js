@@ -22,7 +22,7 @@ app.use(bodyParserRaw);
 app.use(bodyParserText);
 app.use(cors());
 
-const router = require("./route");
+const router = require("./src/route");
 
 app.use("/api/v1", router);
 
