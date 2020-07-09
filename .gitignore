@@ -1,39 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@enoch17 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-enoch17
-/
-CertAuth
-1
-00
-Code
-Issues
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-CertAuth/.gitignore
-
-Phelim added gitignore for enoch
-Latest commit 1d825bd 5 minutes ago
- History
- 0 contributors
-104 lines (76 sloc)  1.57 KB
-  
 # Logs
 logs
 *.log
@@ -138,6 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+<<<<<<< HEAD
 © 2020 GitHub, Inc.
 Terms
 Privacy
@@ -150,3 +115,5 @@ API
 Training
 Blog
 About
+=======
+>>>>>>> 2d9a6844b4b1d655c73661a9429896cd2a1d6bbc

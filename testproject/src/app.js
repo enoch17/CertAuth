@@ -1,9 +1,10 @@
 const bodyParser = require('body-parser');
 
+const bodyParser = require('body-parser');
+const log = require('morgan')('dev');
 const express = require('express');
 const cors = require('cors');
 
-const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 // Configure bodyparser
@@ -13,7 +14,6 @@ const bodyParserRaw = bodyParser.raw();
 const bodyParserText = bodyParser.text();
 
 // Configure app.use()
-
 app.use(express.json());
 app.use(bodyParserJSON);
 app.use(bodyParserURLEncoded);
@@ -24,7 +24,10 @@ app.use(cors());
 
 
 exports.getCerty = async (req,resp,next) =>{
+<<<<<<< HEAD
   
+=======
+>>>>>>> 2d9a6844b4b1d655c73661a9429896cd2a1d6bbc
 App = {
     loading: false,
     contracts: {},
@@ -120,9 +123,13 @@ App = {
           window.location.reload()
       },
         getCertificate: async(id,snum) =>{
+<<<<<<< HEAD
           id=1;
           snum = 234232;
 
+=======
+          snum = req.body;
+>>>>>>> 2d9a6844b4b1d655c73661a9429896cd2a1d6bbc
 
         //get certificates
         App.setLoading(true)
@@ -134,7 +141,10 @@ App = {
           var holder = hold[2].toString() 
 
           console.log('Certificate gotten')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d9a6844b4b1d655c73661a9429896cd2a1d6bbc
           var split =holder.split(";");
           var len = split.length
           console.log(holder)  
@@ -145,6 +155,7 @@ App = {
            console.log(split2)
            if(snum == split2[0])
            {
+<<<<<<< HEAD
 
             // resp.status(200).json({
             //   success: true,
@@ -155,12 +166,22 @@ App = {
             
             return split2
 
+=======
+              return split2
+>>>>>>> 2d9a6844b4b1d655c73661a9429896cd2a1d6bbc
            }
           }
           return "Certificate doesn't exist"
         }
         )
+<<<<<<< HEAD
 
+=======
+        resp.json({
+          sucess: true,
+          split2,
+        })
+>>>>>>> 2d9a6844b4b1d655c73661a9429896cd2a1d6bbc
     }
 
   }
@@ -174,6 +195,7 @@ App = {
 
 }
 
+<<<<<<< HEAD
 // App = {
 //     loading: false,
 //     contracts: {},
@@ -318,3 +340,6 @@ App = {
 //       App.load()
 //     })
 //   })
+=======
+
+>>>>>>> 2d9a6844b4b1d655c73661a9429896cd2a1d6bbc
